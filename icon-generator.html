@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photoshop Plugin Icon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .preview-section {
+            background: #444;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .preview-item {
+            background: #555;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .dark-bg {
+            background: #222;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .light-bg {
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+        .download-all {
+            background: #00cc66;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-section">
+        <h2>Icon Preview</h2>
+        <div class="preview-grid">
+            <div class="preview-item">
+                <h3>Dark Theme (23x23)</h3>
+                <div class="dark-bg">
+                    <div id="dark-1x"></div>
+                </div>
+                <button onclick="downloadIcon('dark', 1)">Download 1x</button>
+            </div>
+            <div class="preview-item">
+                <h3>Dark Theme (46x46)</h3>
+                <div class="dark-bg">
+                    <div id="dark-2x"></div>
+                </div>
+                <button onclick="downloadIcon('dark', 2)">Download 2x</button>
+            </div>
+            <div class="preview-item">
+                <h3>Light Theme (23x23)</h3>
+                <div class="light-bg">
+                    <div id="light-1x"></div>
+                </div>
+                <button onclick="downloadIcon('light', 1)">Download 1x</button>
+            </div>
+            <div class="preview-item">
+                <h3>Light Theme (46x46)</h3>
+                <div class="light-bg">
+                    <div id="light-2x"></div>
+                </div>
+                <button onclick="downloadIcon('light', 2)">Download 2x</button>
+            </div>
+            <div class="preview-item">
+                <h3>Plugin List Icon (24x24)</h3>
+                <div class="dark-bg">
+                    <div id="plugin-1x"></div>
+                </div>
+                <button onclick="downloadPluginIcon(1)">Download 1x</button>
+            </div>
+            <div class="preview-item">
+                <h3>Plugin List Icon (48x48)</h3>
+                <div class="dark-bg">
+                    <div id="plugin-2x"></div>
+                </div>
+                <button onclick="downloadPluginIcon(2)">Download 2x</button>
+            </div>
+        </div>
+        <button class="download-all" onclick="downloadAll()">Download All Icons</button>
+    </div>
+
+    <script>
+        async function loadSVGContent() {
+            try {
+                return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23" height="23" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+    <!-- 彩虹饼图背景 -->
+    <g>
+        <!-- 红色扇形 -->
+        <path d="M11.5 11.5 L11.5 1 A10.5 10.5 0 0 1 20.8 6.3" fill="#FF6B6B"/>
+        <!-- 橙色扇形 -->
+        <path d="M11.5 11.5 L20.8 6.3 A10.5 10.5 0 0 1 20.8 16.7" fill="#FF8C42"/>
+        <!-- 黄色扇形 -->
+        <path d="M11.5 11.5 L20.8 16.7 A10.5 10.5 0 0 1 11.5 22" fill="#FFD93D"/>
+        <!-- 绿色扇形 -->
+        <path d="M11.5 11.5 L11.5 22 A10.5 10.5 0 0 1 2.2 16.7" fill="#6BCB77"/>
+        <!-- 蓝色扇形 -->
+        <path d="M11.5 11.5 L2.2 16.7 A10.5 10.5 0 0 1 2.2 6.3" fill="#4D96FF"/>
+        <!-- 紫色扇形 -->
+        <path d="M11.5 11.5 L2.2 6.3 A10.5 10.5 0 0 1 11.5 1" fill="#9B59B6"/>
+    </g>
+    
+    <!-- 中心白色圆形背景 -->
+    <circle cx="11.5" cy="11.5" r="7" fill="white"/>
+    
+    <!-- 中心的眼睛图标 -->
+    <g transform="translate(5.5,8)">
+        <path d="M6 0C3 0 0.6 1.8 0 3.6C0.6 5.4 3 7.2 6 7.2C9 7.2 11.4 5.4 12 3.6C11.4 1.8 9 0 6 0ZM6 6C4.67 6 3.6 4.92 3.6 3.6C3.6 2.27 4.67 1.2 6 1.2C7.32 1.2 8.4 2.27 8.4 3.6C8.4 4.92 7.32 6 6 6ZM6 2.16C5.2 2.16 4.56 2.8 4.56 3.6C4.56 4.4 5.2 5.04 6 5.04C6.8 5.04 7.44 4.4 7.44 3.6C7.44 2.8 6.8 2.16 6 2.16Z" 
+        fill="black"/>
+    </g>
+</svg>`;
+            } catch (error) {
+                console.error('Error loading SVG:', error);
+                return null;
+            }
+        }
+
+        function modifySVGForTheme(svgContent, theme) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(svgContent, 'image/svg+xml');
+            
+            // 修改眼睛颜色
+            const eyePath = doc.querySelector('g[transform="translate(5.5,8)"] path');
+            if (eyePath) {
+                eyePath.setAttribute('fill', theme === 'light' ? '#000000' : '#FFFFFF');
+            }
+            
+            // 修改中心圆形背景颜色
+            const centerCircle = doc.querySelector('circle');
+            if (centerCircle) {
+                centerCircle.setAttribute('fill', theme === 'light' ? '#FFFFFF' : '#333333');
+            }
+            
+            return new XMLSerializer().serializeToString(doc);
+        }
+
+        function createSVGPreview(containerId, svgContent, theme, size) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const modifiedSVG = modifySVGForTheme(svgContent, theme);
+            container.innerHTML = modifiedSVG;
+            const svg = container.querySelector('svg');
+            if (svg) {
+                svg.setAttribute('width', size);
+                svg.setAttribute('height', size);
+            }
+        }
+
+        async function initializePreviews() {
+            const svgContent = await loadSVGContent();
+            if (!svgContent) return;
+
+            createSVGPreview('dark-1x', svgContent, 'dark', '23');
+            createSVGPreview('dark-2x', svgContent, 'dark', '46');
+            createSVGPreview('light-1x', svgContent, 'light', '23');
+            createSVGPreview('light-2x', svgContent, 'light', '46');
+            createSVGPreview('plugin-1x', svgContent, 'dark', '24');
+            createSVGPreview('plugin-2x', svgContent, 'dark', '48');
+        }
+
+        async function downloadIcon(theme, scale) {
+            const svgContent = await loadSVGContent();
+            if (!svgContent) return;
+
+            const size = scale === 1 ? 23 : 46;
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+
+            ctx.clearRect(0, 0, size, size);
+
+            const modifiedSVG = modifySVGForTheme(svgContent, theme);
+            
+            await new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0, size, size);
+                    
+                    const link = document.createElement('a');
+                    link.download = `icon-${theme}@${scale}x.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    resolve();
+                };
+                
+                img.onerror = reject;
+                
+                const svgBase64 = btoa(unescape(encodeURIComponent(modifiedSVG)));
+                img.src = `data:image/svg+xml;base64,${svgBase64}`;
+            });
+        }
+
+        async function downloadPluginIcon(scale) {
+            const svgContent = await loadSVGContent();
+            if (!svgContent) return;
+
+            const size = scale === 1 ? 24 : 48;
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+
+            ctx.clearRect(0, 0, size, size);
+
+            const modifiedSVG = modifySVGForTheme(svgContent, 'dark');
+            
+            await new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0, size, size);
+                    
+                    const link = document.createElement('a');
+                    link.download = `plugin@${scale}x.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    resolve();
+                };
+                
+                img.onerror = reject;
+                
+                const svgBase64 = btoa(unescape(encodeURIComponent(modifiedSVG)));
+                img.src = `data:image/svg+xml;base64,${svgBase64}`;
+            });
+        }
+
+        async function downloadAll() {
+            try {
+                await downloadIcon('dark', 1);
+                await downloadIcon('dark', 2);
+                await downloadIcon('light', 1);
+                await downloadIcon('light', 2);
+                await downloadPluginIcon(1);
+                await downloadPluginIcon(2);
+            } catch (error) {
+                console.error('Error downloading icons:', error);
+            }
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', initializePreviews);
+    </script>
+</body>
+</html> 

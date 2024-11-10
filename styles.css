@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    background-color: rgb(83, 83, 83);
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px 12px 10px;
+    background-color: rgb(83, 83, 83);
+}
+
+.color-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    margin: 0;
+}
+
+.color-group:hover {
+    background-color: rgb(60, 60, 60);
+}
+
+.color-indicator {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 颜色类 - 改回原来的颜色 */
+.no-color { background: rgb(83, 83, 83); }
+.red { background: rgb(176, 66, 63); }
+.orange { background: rgb(165, 98, 10); }
+.yellow { background: rgb(170, 137, 10); }
+.green { background: rgb(95, 130, 60); }
+.seafoam { background: rgb(0, 102, 98); }
+.blue { background: rgb(82, 111, 153); }
+.indigo { background: rgb(70, 73, 160); }
+.magenta { background: rgb(170, 47, 100); }
+.fuchsia { background: rgb(134, 37, 135); }
+.violet { background: rgb(113, 85, 160); }
+.gray { background: rgb(106, 106, 106); }
+
+.visibility-toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.visibility-toggle svg {
+    color: rgba(255, 255, 255, 0.8);
+    width: 14px;
+    height: 14px;
+}
+
+.color-group:hover .visibility-toggle svg {
+    color: rgba(255, 255, 255, 1);
+}
+
+.color-group[data-visible="false"] {
+    opacity: 0.5;
+}
+
+.color-group[data-visible="false"] .color-indicator {
+    opacity: 0.7;
+} 
